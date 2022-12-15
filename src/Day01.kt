@@ -1,17 +1,25 @@
+fun part1(inputs: List<String>): Int {
+    var maxCalorie = 0
+    var sumCalorie = 0
+    inputs.forEach { input ->
+        if (input == "") {
+            if (maxCalorie < sumCalorie) {
+                maxCalorie = sumCalorie
+            }
+            sumCalorie = 0
+
+            return@forEach
+        }
+
+        sumCalorie += input.toInt()
+    }
+
+    return maxCalorie
+}
+
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
-    }
 
-    fun part2(input: List<String>): Int {
-        return input.size
-    }
+    val inputs: List<String> = readInput("Day01")
+    part1(inputs).println()
 
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
-
-    val input = readInput("Day01")
-    part1(input).println()
-    part2(input).println()
 }
